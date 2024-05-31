@@ -1,0 +1,69 @@
+/* 1rem = 10px */
+:root {
+  --body-font-size: 16;
+  --letter-spacing: 0.6;
+}
+.usp-icons__header {
+  text-align: center;
+  max-width: 60%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+.usp-icons__heading {
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 1.6rem;
+}
+.usp-icons__description {
+  color: rgba(33, 35, 38, 0.75);
+}
+.usp-icons__description p {
+  font-size: var(--body-font-size)px;
+  text-align: center;
+  line-height: 1.5em;
+  margin: 0;
+}
+.usp-icons__content {
+  padding-top: 1.6rem;
+}
+.usp-icons__icon {
+  width: 100%;
+  text-align: center;
+}
+.usp-icons__icon-svg {
+  margin-bottom: 1rem;
+}
+.usp-icons__icon-svg svg {
+  width: 2.6rem;
+  height: 2.6rem;
+}
+.usp-icons__icon-heading {
+  font-size: var(--body-font-size)px;
+  letter-spacing: var(--letter-spacing)px;
+  color: rgba(26, 27, 24, 1);
+  margin: 1.6rem 0;
+}
+.usp-icons__icon-description {
+  color: rgba(33, 35, 38, 0.75);
+  font-size: var(--body-font-size)px;
+  line-height: 1.4em;
+  letter-spacing: var(--letter-spacing)px;
+}
+@media screen and (max-width: 767px) {
+  /* controls the width of the list item on viewport */
+  .splide__slide {
+    flex: 0 0 42%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .usp-icons__content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .usp-icons__icon {
+    max-width: 25%;
+  }
+}

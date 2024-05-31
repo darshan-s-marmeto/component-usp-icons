@@ -1,0 +1,200 @@
+<div class="usp-icons padding-{{ section.id }} {% if section.settings.section_width == 'full_width' %} page-width {% endif %} color-{{ section.settings.section_color_scheme }}">
+  <div class="usp-icons__header">
+    {% if section.settings.heading != blank %}
+      <h2 class="usp-icons__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.description != blank %}
+      <div class="usp-icons__description">{{ section.settings.description }}</div>
+    {% endif %}
+  </div>
+  <usp-icon-slider
+    data-autoplay="{{ section.settings.enable_autoplay }}"
+    data-interval="{{ section.settings.autoplay_interval }}"
+    data-pagination="{{ section.settings.enable_page_dots }}"
+    data-arrows="{{ section.settings.enable_navigation_arrowa }}"
+  >
+    {% comment %} <div> {% endcomment %}
+      <div class="splide__track">
+        <ul class="splide__list usp-icons__content">
+          {% for block in section.blocks %}
+            <li class="usp-icons__icon splide__slide">
+              <div class="usp-icons__icon-svg">
+                {% if section.settings.heading != blank %}
+                  {{ block.settings.svg_icon }}
+                {% else %}
+                  {% assign placeholeder_image = 'image' | append: '-' | append: forloop.index %}
+                  {{ placeholeder_image | placeholder_svg_tag }}
+                {% endif %}
+              </div>
+              {% if block.settings.heading != blank %}
+                <div class="usp-icons__icon-heading">{{ block.settings.heading }}</div>
+              {% endif %}
+              {% if block.settings.description != blank %}
+                <div class="usp-icons__icon-description">{{ block.settings.description }}</div>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% comment %} </div> {% endcomment %}
+  </usp-icon-slider>
+</div>
+
+
+{{ 'usp-icons.css' | asset_url| stylesheet_tag }}
+<style>
+  .padding-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  @media (max-width: 768px) {
+    .padding-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+  }
+</style>
+
+<script src="{{ 'usp-icons.js' | asset_url }}"></script>
+
+{% schema %}
+{
+  "name": "USP Icons",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 40
+    },
+    {
+      "type": "select",
+      "label": "Section width",
+      "id": "section_width",
+      "default": "within_container",
+      "options": [
+        {
+          "label": "Within container",
+          "value": "within_container"
+        },
+        {
+          "label": "Full width",
+          "value": "full_width"
+        }
+      ]
+    },
+    {
+      "type": "color_scheme",
+      "id": "section_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Slider options (only for mobile)"
+    },
+    {
+      "type": "checkbox",
+      "label": "Enable autoplay",
+      "id": "enable_autoplay",
+      "default": false,
+      "info": "select to enable autoplay "
+    },
+    {
+      "type": "range",
+      "label": "Autoplay interval",
+      "id": "autoplay_interval",
+      "default": 3,
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "unit": "s"
+    },
+    {
+      "type": "checkbox",
+      "label": "Enable page dots",
+      "id": "enable_page_dots",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "label": "Enable navigation arrowa",
+      "id": "enable_navigation_arrowa",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Content options"
+    },
+    {
+      "type": "text",
+      "label": "Heading",
+      "id": "heading",
+      "default": "Heading"
+    },
+    {
+      "type": "richtext",
+      "label": "Description",
+      "id": "description",
+      "default": "<p>Description</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon",
+      "name": "Icon",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Content options"
+        },
+        {
+          "type": "text",
+          "label": "Heading",
+          "id": "heading",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "label": "Description",
+          "id": "description",
+          "default": "<p>Description</p>"
+        },
+        {
+          "type": "html",
+          "label": "SVG icon",
+          "id": "svg_icon"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "USP Icons"
+    }
+  ]
+}
+{% endschema %}
+ 
+ 
