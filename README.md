@@ -1,4 +1,4 @@
-# Sample Component
+# USP ICONS Component
 
 The USP (Unique Selling Proposition) Icons Component is designed to enhance your Shopify storefront by showcasing key selling points with customizable icons. This component is especially useful for highlighting features such as free shipping, return policies, customer support, and other unique selling points. It is optimized for mobile devices, ensuring a seamless user experience.
 
